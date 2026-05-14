@@ -1,0 +1,88 @@
+/* empty-dock/style.css — Glassy dock for Hyprland empty workspaces */
+
+* {
+  font-family: "Noto Sans", "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+/* Single glassy pill spanning all icon slots */
+.modules-left {
+  background: rgba(50, 50, 70, 0.15);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.modules-left > widget {
+  margin: 0 4px;
+}
+
+/* Each app slot — GTK CSS doesn't support [class^=...]; use explicit IDs */
+#custom-app0, #custom-app1, #custom-app2, #custom-app3,
+#custom-app4, #custom-app5, #custom-app6, #custom-app7,
+#custom-app8, #custom-app9 {
+  min-width: 64px;
+  min-height: 64px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  /* FA7 Brands for firefox/chrome glyphs; FA7 Free Solid (weight 900) for others */
+  font-family: "Font Awesome 7 Brands", "Font Awesome 7 Free";
+  font-weight: 900;
+  font-size: 28px;
+  border-radius: 16px;
+  transition: background 0.15s ease;
+  padding: 0;
+}
+
+#custom-add {
+  min-width: 48px;
+  min-height: 64px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  border-radius: 16px;
+  transition: background 0.15s ease;
+  padding: 0;
+}
+
+#custom-app0:hover, #custom-app1:hover, #custom-app2:hover, #custom-app3:hover,
+#custom-app4:hover, #custom-app5:hover, #custom-app6:hover, #custom-app7:hover,
+#custom-app8:hover, #custom-app9:hover,
+#custom-add:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+#custom-app0:active, #custom-app1:active, #custom-app2:active, #custom-app3:active,
+#custom-app4:active, #custom-app5:active, #custom-app6:active, #custom-app7:active,
+#custom-app8:active, #custom-app9:active,
+#custom-add:active {
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.8;
+}
+
+/* Pin indicator: small dot at bottom */
+.pinned {
+  border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+/* Tooltip */
+tooltip {
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 4px 8px;
+}
+
+tooltip label {
+  color: #fff;
+}

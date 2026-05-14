@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Stub hyprctl for testing.
+# Dispatches to per-command fixture files based on $HYPRCTL_FIXTURE_DIR,
+# or falls back to the monolithic $HYPRCTL_FIXTURE for backward compatibility.
+
+CMD="${1:-}"
+
+if [[ -n "${HYPRCTL_FIXTURE_DIR:-}" ]]; then
+  case "$CMD" in
+    workspaces)      cat "$HYPRCTL_FIXTURE_DIR/workspaces.json" ;;
+    activeworkspace) cat "$HYPRCTL_FIXTURE_DIR/activeworkspace.json" ;;
+    clients)         cat "$HYPRCTL_FIXTURE_DIR/clients.json" ;;
+    *)               echo "[]" ;;
+  esac
+else
+  # Legacy: single fixture file (used by existing tests)
+  cat "${HYPRCTL_FIXTURE:-/dev/null}"
+fi

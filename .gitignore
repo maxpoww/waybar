@@ -1,0 +1,12 @@
+# Temporary/runtime files
+/tmp/
+*.pid
+*.lock
+
+# Editor backups
+*~
+*.swp
+*.swo
+
+# Claude Code local settings
+offers/.claude/

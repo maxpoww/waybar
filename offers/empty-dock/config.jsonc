@@ -1,0 +1,102 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 88,
+  "margin-top": 95,
+  "margin-left": 189,
+  "exclusive": false,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "custom/app0",
+    "custom/app1",
+    "custom/app2",
+    "custom/app3",
+    "custom/app4",
+    "custom/app5",
+    "custom/app6",
+    "custom/app7",
+    "custom/app8",
+    "custom/app9",
+    "custom/add"
+  ],
+  "modules-center": [],
+  "modules-right": [],
+  "custom/app0": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh firefox Firefox --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh firefox Firefox",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 0"
+  },
+  "custom/app1": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh kitty Terminal --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh kitty Terminal",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 1"
+  },
+  "custom/app2": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh google-chrome-stable Chrome --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh google-chrome-stable Chrome",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 2"
+  },
+  "custom/app3": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh code Code --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh code Code",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 3"
+  },
+  "custom/app4": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh nautilus Files --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh nautilus Files",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 4"
+  },
+  "custom/app5": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh gimp-3.0 GIMP --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh gimp-3.0 GIMP",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 5"
+  },
+  "custom/app6": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh mpv MPV --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh mpv MPV",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 6"
+  },
+  "custom/app7": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh obs OBS --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh obs OBS",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 7"
+  },
+  "custom/app8": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh vlc VLC --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh vlc VLC",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 8"
+  },
+  "custom/app9": {
+    "exec": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh pavucontrol Volume --print-icon ",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/launch-app.sh pavucontrol Volume",
+    "on-click-right": "/home/max/.config/waybar/offers/empty-dock/context-menu.sh 9"
+  },
+  "custom/add": {
+    "exec": "echo '{\"text\":\" +\",\"tooltip\":\"Add app\"}'",
+    "return-type": "json",
+    "interval": "once",
+    "on-click": "/home/max/.config/waybar/offers/empty-dock/add-app.sh"
+  }
+}

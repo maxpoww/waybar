@@ -1,0 +1,94 @@
+{
+  "apps": [
+    {
+      "id": 0,
+      "name": "Firefox",
+      "exec": "firefox",
+      "icon": "firefox",
+      "launch_count": 64,
+      "pinned": true,
+      "glyph": ""
+    },
+    {
+      "id": 1,
+      "name": "Terminal",
+      "exec": "kitty",
+      "icon": "kitty",
+      "launch_count": 64,
+      "pinned": true,
+      "glyph": ""
+    },
+    {
+      "id": 2,
+      "name": "Chrome",
+      "exec": "google-chrome-stable",
+      "icon": "google-chrome",
+      "launch_count": 41,
+      "pinned": false,
+      "glyph": ""
+    },
+    {
+      "id": 3,
+      "name": "Code",
+      "exec": "code",
+      "icon": "vscode",
+      "launch_count": 37,
+      "pinned": false,
+      "glyph": ""
+    },
+    {
+      "id": 4,
+      "name": "Files",
+      "exec": "nautilus",
+      "icon": "org.gnome.Nautilus",
+      "launch_count": 30,
+      "pinned": false,
+      "glyph": ""
+    },
+    {
+      "id": 5,
+      "name": "GIMP",
+      "exec": "gimp-3.0",
+      "icon": "gimp",
+      "launch_count": 21,
+      "pinned": false,
+      "glyph": ""
+    },
+    {
+      "id": 6,
+      "name": "MPV",
+      "exec": "mpv",
+      "icon": "mpv",
+      "launch_count": 18,
+      "pinned": false,
+      "glyph": ""
+    },
+    {
+      "id": 7,
+      "name": "OBS",
+      "exec": "obs",
+      "icon": "com.obsproject.Studio",
+      "launch_count": 13,
+      "pinned": false,
+      "glyph": ""
+    },
+    {
+      "id": 8,
+      "name": "VLC",
+      "exec": "vlc",
+      "icon": "vlc",
+      "launch_count": 16,
+      "pinned": false,
+      "glyph": ""
+    },
+    {
+      "id": 9,
+      "name": "Volume",
+      "exec": "pavucontrol",
+      "icon": "multimedia-volume-control",
+      "launch_count": 25,
+      "pinned": false,
+      "glyph": ""
+    }
+  ]
+}

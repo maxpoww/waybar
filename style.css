@@ -1,0 +1,316 @@
+* {
+    font-family: font-awesome, meslo-lg, meslo-lgs-nf;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+/* ── Glass pills (uniform base style) ────────────────────────────── */
+
+#screen-type-group > *,
+#screen-type-group button,
+#custom-screen-type,
+#custom-screen-type-full,
+#custom-screen-type-eye,
+#custom-screen-type-cinema,
+#custom-screen-type-dark-real,
+#custom-screen-type-dark-warm,
+#custom-screen-type-paper,
+#custom-screen-type-newspaper,
+#custom-clock,
+#custom-battery,
+#custom-x,
+#custom-tools,
+#custom-blue,
+#custom-kill,
+#custom-scan,
+#custom-more,
+#custom-wifi,
+#custom-kill2,
+#custom-scan2,
+#custom-more2,
+#custom-new,
+#custom-hidden,
+#custom-reboot,
+#custom-lock,
+#custom-power,
+#custom-bg-mode,
+#custom-window,
+#custom-ws-current,
+#custom-ws-new,
+#custom-ws-1,
+#custom-ws-2,
+#custom-ws-3,
+#custom-ws-4,
+#custom-ws-5,
+#custom-ws-6,
+#custom-ws-7,
+#custom-ws-8,
+#custom-ws-9 {
+    background: rgba(50, 50, 70, 0.55);
+    border-radius: 30px;
+    border: transparent;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    padding: 0 9px 0 8px;
+    transition: color 200ms ease, text-shadow 200ms ease;
+}
+
+/* ── Inactive workspace (dimmed via opacity) ─────────────────────── */
+#custom-ws-1.inactive,
+#custom-ws-2.inactive,
+#custom-ws-3.inactive,
+#custom-ws-4.inactive,
+#custom-ws-5.inactive,
+#custom-ws-6.inactive,
+#custom-ws-7.inactive,
+#custom-ws-8.inactive,
+#custom-ws-9.inactive {
+    opacity: 0.45;
+}
+
+/* ── Hover (general) ─────────────────────────────────────────────── */
+
+#screen-type-group > *:hover,
+#screen-type-group button:hover,
+#custom-screen-type:hover,
+#custom-screen-type-full:hover,
+#custom-screen-type-eye:hover,
+#custom-screen-type-cinema:hover,
+#custom-screen-type-dark-real:hover,
+#custom-screen-type-dark-warm:hover,
+#custom-screen-type-paper:hover,
+#custom-screen-type-newspaper:hover,
+#custom-clock:hover,
+#custom-battery:hover,
+#custom-x:hover,
+#custom-tools:hover,
+#custom-blue:hover,
+#custom-kill:hover,
+#custom-scan:hover,
+#custom-more:hover,
+#custom-wifi:hover,
+#custom-kill2:hover,
+#custom-scan2:hover,
+#custom-more2:hover,
+#custom-new:hover,
+#custom-hidden:hover,
+#custom-window:hover,
+#custom-ws-current:hover,
+#custom-ws-new:hover,
+#custom-ws-1:hover,
+#custom-ws-2:hover,
+#custom-ws-3:hover,
+#custom-ws-4:hover,
+#custom-ws-5:hover,
+#custom-ws-6:hover,
+#custom-ws-7:hover,
+#custom-ws-8:hover,
+#custom-ws-9:hover {
+    background: rgba(130, 130, 150, 0.70);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Workspace drawer: trigger shows "+" on hover ────────────────── */
+#custom-ws-current:hover {
+    color: transparent;
+    text-shadow: none;
+    background-color: rgba(80, 120, 220, 0.70);
+    background-image: url("/home/max/.config/waybar/icons/plus-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
+    animation: pulse-plus 1s ease-in-out infinite alternate;
+}
+
+#custom-ws-current.light:hover {
+    color: transparent;
+    text-shadow: none;
+    background-image: url("/home/max/.config/waybar/icons/plus-black.svg");
+}
+
+/* ── Hover (power group — distinct colors) ────────────────────────── */
+
+#custom-lock:hover {
+    background-color: #6666ff;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(24);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-reboot:hover {
+    background-color: #66ff66;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(24);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-power:hover {
+    background-color: #ff9999;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(24);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* ── Kitty launcher ───────────────────────────────────────────────── */
+
+#custom-kitty {
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 0px 0 20px;
+    background-image: url("/run/current-system/sw/lib/kitty/logo/kitty.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* ── BG mode ──────────────────────────────────────────────────────── */
+
+#custom-bg-mode {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+#custom-bg-mode.immersive {
+    color: #a0c4ff;
+}
+
+#custom-bg-mode.autoswitch {
+    animation-name: shine;
+    animation-duration: 0.6s;
+    animation-timing-function: steps(16);
+    animation-iteration-count: 6;
+    animation-direction: alternate;
+    animation-fill-mode: none;
+}
+
+/* ── Animations ───────────────────────────────────────────────────── */
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+@keyframes shine {
+    to {
+        background-color: rgba(160, 196, 255, 0.75);
+        color: #000000;
+    }
+}
+
+@keyframes pulse-plus {
+    from {
+        background-size: 14px 14px;
+        background-color: rgba(80, 120, 220, 0.70);
+    }
+    to {
+        background-size: 10px 10px;
+        background-color: rgba(100, 150, 255, 0.90);
+    }
+}
+
+/* ============================================================
+   ADAPTIVE TEXT COLOR — glass-text-daemon
+   Class-based: custom modules output "light" or "dark" CSS class.
+   GTK transitions handle smooth color change — no reload.
+   ============================================================ */
+
+/* Light background → dark text */
+window#waybar #custom-x.light label,
+window#waybar #custom-tools.light label,
+window#waybar #custom-blue.light label,
+window#waybar #custom-kill.light label,
+window#waybar #custom-scan.light label,
+window#waybar #custom-more.light label,
+window#waybar #custom-wifi.light label,
+window#waybar #custom-kill2.light label,
+window#waybar #custom-scan2.light label,
+window#waybar #custom-more2.light label,
+window#waybar #custom-new.light label,
+window#waybar #custom-hidden.light label,
+window#waybar #custom-reboot.light label,
+window#waybar #custom-lock.light label,
+window#waybar #custom-power.light label,
+window#waybar #custom-bg-mode.light label,
+window#waybar #custom-screen-type.light label,
+window#waybar #custom-screen-type-full.light label,
+window#waybar #custom-screen-type-eye.light label,
+window#waybar #custom-screen-type-cinema.light label,
+window#waybar #custom-screen-type-dark-real.light label,
+window#waybar #custom-screen-type-dark-warm.light label,
+window#waybar #custom-screen-type-paper.light label,
+window#waybar #custom-screen-type-newspaper.light label,
+window#waybar #custom-clock.light label,
+window#waybar #custom-battery.light label,
+window#waybar #custom-window.light label,
+window#waybar #custom-ws-current.light label,
+window#waybar #custom-ws-new.light label,
+window#waybar #custom-ws-1.light label,
+window#waybar #custom-ws-2.light label,
+window#waybar #custom-ws-3.light label,
+window#waybar #custom-ws-4.light label,
+window#waybar #custom-ws-5.light label,
+window#waybar #custom-ws-6.light label,
+window#waybar #custom-ws-7.light label,
+window#waybar #custom-ws-8.light label,
+window#waybar #custom-ws-9.light label,
+window#waybar label.light {
+    color: rgba(0, 0, 0, 0.85);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+/* Light background → dark text (hover) */
+window#waybar #custom-x.light:hover label,
+window#waybar #custom-tools.light:hover label,
+window#waybar #custom-blue.light:hover label,
+window#waybar #custom-kill.light:hover label,
+window#waybar #custom-scan.light:hover label,
+window#waybar #custom-more.light:hover label,
+window#waybar #custom-wifi.light:hover label,
+window#waybar #custom-kill2.light:hover label,
+window#waybar #custom-scan2.light:hover label,
+window#waybar #custom-more2.light:hover label,
+window#waybar #custom-new.light:hover label,
+window#waybar #custom-hidden.light:hover label,
+window#waybar #custom-reboot.light:hover label,
+window#waybar #custom-lock.light:hover label,
+window#waybar #custom-power.light:hover label,
+window#waybar #custom-bg-mode.light:hover label,
+window#waybar #custom-screen-type.light:hover label,
+window#waybar #custom-screen-type-full.light:hover label,
+window#waybar #custom-screen-type-eye.light:hover label,
+window#waybar #custom-screen-type-cinema.light:hover label,
+window#waybar #custom-screen-type-dark-real.light:hover label,
+window#waybar #custom-screen-type-dark-warm.light:hover label,
+window#waybar #custom-screen-type-paper.light:hover label,
+window#waybar #custom-screen-type-newspaper.light:hover label,
+window#waybar #custom-clock.light:hover label,
+window#waybar #custom-battery.light:hover label,
+window#waybar #custom-window.light:hover label,
+window#waybar #custom-ws-current.light:hover label,
+window#waybar #custom-ws-new.light:hover label,
+window#waybar #custom-ws-1.light:hover label,
+window#waybar #custom-ws-2.light:hover label,
+window#waybar #custom-ws-3.light:hover label,
+window#waybar #custom-ws-4.light:hover label,
+window#waybar #custom-ws-5.light:hover label,
+window#waybar #custom-ws-6.light:hover label,
+window#waybar #custom-ws-7.light:hover label,
+window#waybar #custom-ws-8.light:hover label,
+window#waybar #custom-ws-9.light:hover label,
+window#waybar label.light:hover {
+    color: rgba(0, 0, 0, 0.95);
+}
+
