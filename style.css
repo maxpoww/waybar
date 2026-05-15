@@ -4,10 +4,8 @@
 }
 
 window#waybar {
- background: rgba(90, 90, 110, 0.1);
+ background: rgba(50, 50, 70, 0.10);
  border-radius: 30px;
- padding: 8px 32px;
- margin: 0px 3px;
 }
 
 /* ── Glass pills (uniform base style) ────────────────────────────── */
@@ -50,7 +48,7 @@ window#waybar {
 #custom-ws-7,
 #custom-ws-8,
 #custom-ws-9 {
-    background: rgba(50, 50, 70, 0.20);
+    background: rgba(50, 50, 70, 0.30);
     border-radius: 30px;
     border: transparent;
     color: rgba(255, 255, 255, 1);
