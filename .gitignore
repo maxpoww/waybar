@@ -10,3 +10,6 @@
 
 # Claude Code local settings
 offers/.claude/
+
+# Superpowers brainstorm sessions
+.superpowers/

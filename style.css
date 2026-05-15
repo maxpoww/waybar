@@ -36,6 +36,20 @@ window#waybar {
 #custom-lock,
 #custom-power,
 #custom-bg-mode,
+#custom-win-icon,
+#custom-win-close,
+#custom-win-minimize,
+#custom-win-move-trigger,
+#custom-win-move-1,
+#custom-win-move-2,
+#custom-win-move-3,
+#custom-win-move-4,
+#custom-win-move-5,
+#custom-win-move-6,
+#custom-win-move-7,
+#custom-win-move-8,
+#custom-win-move-9,
+#custom-win-move-new,
 #custom-window,
 #custom-ws-current,
 #custom-ws-new,
@@ -96,6 +110,20 @@ window#waybar {
 #custom-more2:hover,
 #custom-new:hover,
 #custom-hidden:hover,
+#custom-win-icon:hover,
+#custom-win-close:hover,
+#custom-win-minimize:hover,
+#custom-win-move-trigger:hover,
+#custom-win-move-1:hover,
+#custom-win-move-2:hover,
+#custom-win-move-3:hover,
+#custom-win-move-4:hover,
+#custom-win-move-5:hover,
+#custom-win-move-6:hover,
+#custom-win-move-7:hover,
+#custom-win-move-8:hover,
+#custom-win-move-9:hover,
+#custom-win-move-new:hover,
 #custom-window:hover,
 #custom-ws-current:hover,
 #custom-ws-new:hover,
@@ -128,6 +156,24 @@ window#waybar {
     color: transparent;
     text-shadow: none;
     background-image: url("/home/max/.config/waybar/icons/plus-black.svg");
+}
+
+/* ── Active window module — distinct hover colors ─────────────────── */
+
+#custom-win-close:hover {
+    background-color: rgba(255, 100, 100, 0.60);
+}
+
+#custom-win-minimize:hover {
+    background-color: rgba(255, 200, 50, 0.50);
+}
+
+#custom-win-move-trigger:hover {
+    background-color: rgba(100, 200, 100, 0.50);
+}
+
+#custom-win-move-new:hover {
+    background-color: rgba(80, 120, 220, 0.70);
 }
 
 /* ── Hover (power group — distinct colors) ────────────────────────── */
@@ -242,6 +288,20 @@ window#waybar #custom-screen-type-paper.light label,
 window#waybar #custom-screen-type-newspaper.light label,
 window#waybar #custom-clock.light label,
 window#waybar #custom-battery.light label,
+window#waybar #custom-win-icon.light label,
+window#waybar #custom-win-close.light label,
+window#waybar #custom-win-minimize.light label,
+window#waybar #custom-win-move-trigger.light label,
+window#waybar #custom-win-move-1.light label,
+window#waybar #custom-win-move-2.light label,
+window#waybar #custom-win-move-3.light label,
+window#waybar #custom-win-move-4.light label,
+window#waybar #custom-win-move-5.light label,
+window#waybar #custom-win-move-6.light label,
+window#waybar #custom-win-move-7.light label,
+window#waybar #custom-win-move-8.light label,
+window#waybar #custom-win-move-9.light label,
+window#waybar #custom-win-move-new.light label,
 window#waybar #custom-window.light label,
 window#waybar #custom-ws-current.light label,
 window#waybar #custom-ws-new.light label,
@@ -286,6 +346,20 @@ window#waybar #custom-screen-type-paper.light:hover label,
 window#waybar #custom-screen-type-newspaper.light:hover label,
 window#waybar #custom-clock.light:hover label,
 window#waybar #custom-battery.light:hover label,
+window#waybar #custom-win-icon.light:hover label,
+window#waybar #custom-win-close.light:hover label,
+window#waybar #custom-win-minimize.light:hover label,
+window#waybar #custom-win-move-trigger.light:hover label,
+window#waybar #custom-win-move-1.light:hover label,
+window#waybar #custom-win-move-2.light:hover label,
+window#waybar #custom-win-move-3.light:hover label,
+window#waybar #custom-win-move-4.light:hover label,
+window#waybar #custom-win-move-5.light:hover label,
+window#waybar #custom-win-move-6.light:hover label,
+window#waybar #custom-win-move-7.light:hover label,
+window#waybar #custom-win-move-8.light:hover label,
+window#waybar #custom-win-move-9.light:hover label,
+window#waybar #custom-win-move-new.light:hover label,
 window#waybar #custom-window.light:hover label,
 window#waybar #custom-ws-current.light:hover label,
 window#waybar #custom-ws-new.light:hover label,
