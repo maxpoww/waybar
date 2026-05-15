@@ -4,7 +4,8 @@
 }
 
 window#waybar {
-    background-color: transparent;
+ background: rgba(50, 50, 70, 0.1);;
+ border-radius: 30px;
 }
 
 /* ── Glass pills (uniform base style) ────────────────────────────── */
