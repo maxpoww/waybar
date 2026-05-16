@@ -3,8 +3,7 @@
   "spacing": 4,
   "modules-left": [
     "group/workspaces",
-    "group/active-window",
-    "custom/kitty"
+    "group/active-window"
   ],
   "modules-center": [
     "group/group-rofi",
@@ -24,13 +23,6 @@
     "spacing": 10,
     "show-passive-items": true,
     "reverse-direction": false
-  },
-  "custom/kitty": {
-    "exec": "~/kitty.sh",
-    "interval": 2,
-    "return-type": "json",
-    "format": " ",
-    "on-click": "kitty"
   },
   "group/active-window": {
     "orientation": "inherit",
