@@ -1,21 +1,98 @@
 #!/usr/bin/env bash
-# Output JSON for active window icon module
-m=$(cat /tmp/glass-mode 2>/dev/null || echo dark)
+# Output icon file path for the active window (with caching)
+
+CACHE_FILE="/tmp/waybar-win-icon-cache"
+
 class=$(hyprctl activewindow -j 2>/dev/null | jq -r '.class // empty' 2>/dev/null)
+[ -z "$class" ] && exit 0
 
-# Map window class to nerd font icon (using printf for reliable unicode)
-case "${class,,}" in
-  kitty|foot|alacritty)  icon=$'\uf120' ;;
-  firefox|firedragon)    icon=$'\U000f0239' ;;
-  chromium|google-chrome) icon=$'\uf268' ;;
-  code|code-oss)         icon=$'\U000f0a1e' ;;
-  nautilus|thunar)       icon=$'\uf413' ;;
-  spotify)               icon=$'\uf1bc' ;;
-  discord)               icon=$'\U000f066f' ;;
-  telegram*)             icon=$'\uf2c6' ;;
-  slack)                 icon=$'\U000f04b1' ;;
-  obsidian)              icon=$'\U000f1c67' ;;
-  *)                     icon=$'\uf2d0' ;;
-esac
+# Check cache: if class hasn't changed, reuse last result
+if [ -f "$CACHE_FILE" ]; then
+  cached_class=$(head -1 "$CACHE_FILE")
+  if [ "$cached_class" = "$class" ]; then
+    sed -n '2p' "$CACHE_FILE"
+    exit 0
+  fi
+fi
 
-printf '{"text":"%s","class":"%s","tooltip":"%s"}' "$icon" "$m" "$class"
+# Icon theme search dirs (NixOS + standard)
+ICON_DIRS=(
+  "$HOME/.local/share/icons"
+  "/run/current-system/sw/share/icons"
+  "/etc/profiles/per-user/$USER/share/icons"
+  "/usr/share/icons"
+)
+SIZES=("32x32" "24x24" "48x48" "16x16" "64x64" "128x128" "256x256" "scalable")
+DESKTOP_DIRS=(
+  "$HOME/.local/share/applications"
+  "/run/current-system/sw/share/applications"
+  "/etc/profiles/per-user/$USER/share/applications"
+  "/usr/share/applications"
+)
+
+# Find .desktop file and extract Icon= name
+icon_name=""
+for dir in "${DESKTOP_DIRS[@]}"; do
+  [ -d "$dir" ] || continue
+  if [ -f "$dir/${class}.desktop" ]; then
+    icon_name=$(grep -m1 '^Icon=' "$dir/${class}.desktop" | cut -d= -f2)
+    break
+  fi
+  for f in "$dir"/*.desktop; do
+    [ -f "$f" ] || continue
+    name=$(basename "$f" .desktop)
+    if [[ "${name,,}" == "${class,,}" ]]; then
+      icon_name=$(grep -m1 '^Icon=' "$f" | cut -d= -f2)
+      break 2
+    fi
+  done
+done
+
+# Search by StartupWMClass
+if [ -z "$icon_name" ]; then
+  for dir in "${DESKTOP_DIRS[@]}"; do
+    [ -d "$dir" ] || continue
+    match=$(grep -rl "StartupWMClass.*${class}" "$dir"/*.desktop 2>/dev/null | head -1)
+    if [ -n "$match" ]; then
+      icon_name=$(grep -m1 '^Icon=' "$match" | cut -d= -f2)
+      break
+    fi
+  done
+fi
+
+[ -z "$icon_name" ] && exit 0
+
+# Absolute path
+if [[ "$icon_name" == /* ]] && [ -f "$icon_name" ]; then
+  printf '%s\n%s\n' "$class" "$icon_name" > "$CACHE_FILE"
+  echo "$icon_name"
+  exit 0
+fi
+
+# Search icon theme hierarchy
+for dir in "${ICON_DIRS[@]}"; do
+  for theme in hicolor Adwaita; do
+    for size in "${SIZES[@]}"; do
+      for ext in png svg; do
+        path="$dir/$theme/$size/apps/$icon_name.$ext"
+        if [ -f "$path" ] || [ -L "$path" ]; then
+          result=$(readlink -f "$path" 2>/dev/null || echo "$path")
+          printf '%s\n%s\n' "$class" "$result" > "$CACHE_FILE"
+          echo "$result"
+          exit 0
+        fi
+      done
+    done
+  done
+done
+
+# Pixmaps fallback
+for dir in /usr/share/pixmaps /run/current-system/sw/share/pixmaps; do
+  for ext in png svg xpm; do
+    if [ -f "$dir/$icon_name.$ext" ]; then
+      printf '%s\n%s\n' "$class" "$dir/$icon_name.$ext" > "$CACHE_FILE"
+      echo "$dir/$icon_name.$ext"
+      exit 0
+    fi
+  done
+done

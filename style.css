@@ -36,9 +36,9 @@ window#waybar {
 #custom-lock,
 #custom-power,
 #custom-bg-mode,
-#custom-win-icon,
 #custom-win-close,
 #custom-win-minimize,
+#custom-win-swap-right,
 #custom-win-move-trigger,
 #custom-win-move-1,
 #custom-win-move-2,
@@ -110,9 +110,9 @@ window#waybar {
 #custom-more2:hover,
 #custom-new:hover,
 #custom-hidden:hover,
-#custom-win-icon:hover,
 #custom-win-close:hover,
 #custom-win-minimize:hover,
+#custom-win-swap-right:hover,
 #custom-win-move-trigger:hover,
 #custom-win-move-1:hover,
 #custom-win-move-2:hover,
@@ -158,6 +158,15 @@ window#waybar {
     background-image: url("/home/max/.config/waybar/icons/plus-black.svg");
 }
 
+/* ── Active window icon (no pill, fills bar height) ───────────────── */
+
+#image-win-icon {
+    background: transparent;
+    border: none;
+    padding: 3px 2px;
+    margin: 3px 2px;
+}
+
 /* ── Active window module — distinct hover colors ─────────────────── */
 
 #custom-win-close:hover {
@@ -166,6 +175,10 @@ window#waybar {
 
 #custom-win-minimize:hover {
     background-color: rgba(255, 200, 50, 0.50);
+}
+
+#custom-win-swap-right:hover {
+    background-color: rgba(100, 160, 255, 0.55);
 }
 
 #custom-win-move-trigger:hover {
@@ -288,9 +301,9 @@ window#waybar #custom-screen-type-paper.light label,
 window#waybar #custom-screen-type-newspaper.light label,
 window#waybar #custom-clock.light label,
 window#waybar #custom-battery.light label,
-window#waybar #custom-win-icon.light label,
 window#waybar #custom-win-close.light label,
 window#waybar #custom-win-minimize.light label,
+window#waybar #custom-win-swap-right.light label,
 window#waybar #custom-win-move-trigger.light label,
 window#waybar #custom-win-move-1.light label,
 window#waybar #custom-win-move-2.light label,
@@ -346,9 +359,9 @@ window#waybar #custom-screen-type-paper.light:hover label,
 window#waybar #custom-screen-type-newspaper.light:hover label,
 window#waybar #custom-clock.light:hover label,
 window#waybar #custom-battery.light:hover label,
-window#waybar #custom-win-icon.light:hover label,
 window#waybar #custom-win-close.light:hover label,
 window#waybar #custom-win-minimize.light:hover label,
+window#waybar #custom-win-swap-right.light:hover label,
 window#waybar #custom-win-move-trigger.light:hover label,
 window#waybar #custom-win-move-1.light:hover label,
 window#waybar #custom-win-move-2.light:hover label,

@@ -5,19 +5,15 @@
 DAEMON="$HOME/.config/waybar/scripts/glass-text-daemon.sh"
 PIDFILE="/tmp/glass-text-daemon.pid"
 
-# Kill previous instances using saved PID (avoids matching unrelated processes)
-if [[ -f "$PIDFILE" ]]; then
-    old_pid=$(cat "$PIDFILE" 2>/dev/null)
-    if [[ -n "$old_pid" ]] && kill -0 "$old_pid" 2>/dev/null; then
-        kill "$old_pid" 2>/dev/null
-        sleep 0.2
-    fi
-    rm -f "$PIDFILE"
-fi
-
+# Kill ALL previous daemon instances
+pkill -f glass-text-daemon 2>/dev/null
+pkill -f workspace-daemon 2>/dev/null
 pkill waybar 2>/dev/null
 sleep 0.3
-rm -f /tmp/glass-text-daemon.lock /tmp/glass-mode
+pkill -f glass-text-daemon 2>/dev/null
+pkill -f workspace-daemon 2>/dev/null
+rm -f "$PIDFILE" /tmp/glass-text-daemon.lock /tmp/glass-mode
+rm -rf /tmp/waybar-cache
 
 # Start waybar
 waybar &
@@ -37,4 +33,14 @@ done
     done
 ) &
 echo $! > "$PIDFILE"
+disown $!
+
+# Start workspace cache daemon
+(
+    trap '' HUP
+    while pgrep -f waybar &>/dev/null; do
+        "$HOME/.config/waybar/scripts/workspace-daemon.sh"
+        sleep 1
+    done
+) &
 disown $!

@@ -27,7 +27,7 @@
   },
   "custom/kitty": {
     "exec": "~/kitty.sh",
-    "interval": 1,
+    "interval": 2,
     "return-type": "json",
     "format": " ",
     "on-click": "kitty"
@@ -39,19 +39,18 @@
       "transition-left-to-right": true
     },
     "modules": [
-      "custom/win-icon",
+      "image#win-icon",
       "custom/win-close",
       "custom/win-minimize",
+      "custom/win-swap-right",
       "group/win-move"
     ]
   },
-  "custom/win-icon": {
+  "image#win-icon": {
     "exec": "~/.config/waybar/scripts/win-icon.sh",
-    "return-type": "json",
-    "format": "{}",
+    "size": 22,
     "interval": 1,
     "signal": 10,
-    "tooltip": true,
     "on-click": "~/.config/waybar/scripts/win-action.sh new-instance"
   },
   "custom/win-close": {
@@ -64,13 +63,22 @@
     "on-click": "hyprctl dispatch killactive"
   },
   "custom/win-minimize": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); printf '{\"text\":\"󰘑\",\"class\":\"%s\"}' \"$m\"",
+    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); printf '{\"text\":\"󰍶\",\"class\":\"%s\"}' \"$m\"",
     "return-type": "json",
     "format": "{}",
     "interval": "once",
     "signal": 10,
     "tooltip": false,
-    "on-click": "hyprctl dispatch movetoworkspace special"
+    "on-click": "hyprctl dispatch movetoworkspacesilent special"
+  },
+  "custom/win-swap-right": {
+    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); printf '{\"text\":\"\\uf021\",\"class\":\"%s\"}' \"$m\"",
+    "return-type": "json",
+    "format": "{}",
+    "interval": "once",
+    "signal": 10,
+    "tooltip": false,
+    "on-click": "/home/max/.config/waybar/scripts/swap-smart.sh"
   },
   "group/win-move": {
     "orientation": "inherit",
@@ -93,7 +101,7 @@
     ]
   },
   "custom/win-move-trigger": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); printf '{\"text\":\"󰁁\",\"class\":\"%s\"}' \"$m\"",
+    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); printf '{\"text\":\"󰯍\",\"class\":\"%s\"}' \"$m\"",
     "return-type": "json",
     "format": "{}",
     "interval": "once",
@@ -101,82 +109,82 @@
     "tooltip": false
   },
   "custom/win-move-1": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(1)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"1\" ]; then printf '{\"text\":\"1\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"1\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-1 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 1"
   },
   "custom/win-move-2": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(2)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"2\" ]; then printf '{\"text\":\"2\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"2\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-2 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 2"
   },
   "custom/win-move-3": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(3)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"3\" ]; then printf '{\"text\":\"3\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"3\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-3 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 3"
   },
   "custom/win-move-4": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(4)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"4\" ]; then printf '{\"text\":\"4\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"4\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-4 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 4"
   },
   "custom/win-move-5": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(5)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"5\" ]; then printf '{\"text\":\"5\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"5\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-5 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 5"
   },
   "custom/win-move-6": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(6)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"6\" ]; then printf '{\"text\":\"6\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"6\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-6 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 6"
   },
   "custom/win-move-7": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(7)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"7\" ]; then printf '{\"text\":\"7\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"7\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-7 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 7"
   },
   "custom/win-move-8": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(8)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"8\" ]; then printf '{\"text\":\"8\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"8\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-8 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 8"
   },
   "custom/win-move-9": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(9)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"9\" ]; then printf '{\"text\":\"9\",\"class\":\"%s current\"}' \"$m\"; else printf '{\"text\":\"9\",\"class\":\"%s\"}' \"$m\"; fi",
+    "exec": "cat /tmp/waybar-cache/win-move-9 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch movetoworkspace 9"
@@ -310,13 +318,13 @@
     "on-click": "swaylock"
   },
   "custom/x": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); printf '{\"text\":\"⧉\",\"class\":\"%s\"}' \"$m\"",
+    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); printf '{\"text\":\"󱂬\",\"class\":\"%s\"}' \"$m\"",
     "return-type": "json",
     "format": "{}",
     "interval": "once",
     "signal": 10,
     "tooltip": false,
-    "on-click": "~/new.sh"
+    "on-click": "~/.config/waybar/scripts/restore-minimized.sh"
   },
   "group/group-2": {
     "orientation": "inherit",
@@ -496,7 +504,7 @@
     ]
   },
   "custom/ws-current": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); ws=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); printf '{\"text\":\"%s\",\"class\":\"%s\"}' \"$ws\" \"$m\"",
+    "exec": "cat /tmp/waybar-cache/ws-current 2>/dev/null",
     "return-type": "json",
     "format": "{}",
     "interval": 1,
@@ -505,82 +513,82 @@
     "on-click": "hyprctl dispatch workspace empty"
   },
   "custom/ws-1": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(1)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"1\" ]; then printf '{\"text\":\"1\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"1\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-1 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 1"
   },
   "custom/ws-2": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(2)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"2\" ]; then printf '{\"text\":\"2\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"2\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-2 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 2"
   },
   "custom/ws-3": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(3)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"3\" ]; then printf '{\"text\":\"3\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"3\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-3 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 3"
   },
   "custom/ws-4": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(4)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"4\" ]; then printf '{\"text\":\"4\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"4\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-4 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 4"
   },
   "custom/ws-5": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(5)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"5\" ]; then printf '{\"text\":\"5\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"5\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-5 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 5"
   },
   "custom/ws-6": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(6)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"6\" ]; then printf '{\"text\":\"6\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"6\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-6 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 6"
   },
   "custom/ws-7": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(7)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"7\" ]; then printf '{\"text\":\"7\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"7\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-7 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 7"
   },
   "custom/ws-8": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(8)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"8\" ]; then printf '{\"text\":\"8\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"8\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-8 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 8"
   },
   "custom/ws-9": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); a=$(hyprctl activeworkspace -j 2>/dev/null | jq -r '.id'); e=$(hyprctl workspaces -j 2>/dev/null | jq '[.[].id] | index(9)'); [ -z \"$e\" ] || [ \"$e\" = \"null\" ] && exit 0; if [ \"$a\" = \"9\" ]; then printf '{\"text\":\"9\",\"class\":\"%s\"}' \"$m\"; else printf '{\"text\":\"9\",\"class\":\"inactive\"}'; fi",
+    "exec": "cat /tmp/waybar-cache/ws-9 2>/dev/null",
     "return-type": "json",
     "format": "{}",
-    "interval": 1,
+    "interval": 2,
     "signal": 10,
     "tooltip": false,
     "on-click": "hyprctl dispatch workspace 9"
@@ -602,7 +610,7 @@
     "tooltip": true
   },
   "custom/window": {
-    "exec": "m=$(cat /tmp/glass-mode 2>/dev/null || echo dark); title=$(hyprctl activewindow -j 2>/dev/null | jq -r \".title // empty\" 2>/dev/null); printf '{\"text\":\"%s\",\"class\":\"%s\"}' \"${title:-}\" \"$m\"",
+    "exec": "cat /tmp/waybar-cache/window 2>/dev/null",
     "return-type": "json",
     "format": "{}",
     "interval": 1,
