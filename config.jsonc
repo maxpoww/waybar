@@ -616,6 +616,6 @@
     "interval": 1,
     "signal": 10,
     "tooltip": false,
-    "on-click": "rofi -show window"
+    "on-click": "~/.config/rofi/window-switcher.sh"
   }
 }
